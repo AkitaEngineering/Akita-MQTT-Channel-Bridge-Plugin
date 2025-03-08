@@ -40,3 +40,4 @@ AMCB is a Meshtastic plugin that bridges Meshtastic channels with MQTT servers, 
 -   paho-mqtt
 
 ## Akita Engineering
+This project is developed and maintained by Akita Engineering. We are dedicated to creating innovative solutions for LoRa and Meshtastic networks.
