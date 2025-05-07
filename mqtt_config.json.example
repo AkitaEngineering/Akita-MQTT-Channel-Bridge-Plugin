@@ -1,0 +1,51 @@
+{
+    "0": {
+        "host": "mqtt.example.com",
+        "port": 1883,
+        "topic": "meshtastic/primary/to_mqtt",
+        "qos": 1,
+        "retain": false,
+        "payload_type": "decoded_only",
+        "tls": {
+            "ca_certs": "/path/to/ca.crt",
+            "certfile": null,
+            "keyfile": null
+        },
+        "will": {
+            "topic": "meshtastic/amcb/bridge0/status",
+            "payload": "offline",
+            "qos": 1,
+            "retain": true,
+            "online_payload": "online"
+        },
+        "mqtt_to_meshtastic": {
+            "subscribe_topic": "meshtastic/primary/from_mqtt",
+            "target_channel_index": 0,
+            "target_node_id": null 
+        }
+    },
+    "1": {
+        "host": "secure.broker.com",
+        "port": 8883,
+        "topic": "meshtastic/private/to_mqtt",
+        "username": "mqttuser",
+        "password": "mqttpassword",
+        "qos": 0,
+        "retain": true,
+        "payload_type": "full_packet",
+        "tls": {
+            "ca_certs": "/etc/ssl/certs/ca-certificates.crt",
+            "certfile": "/path/to/client.crt",
+            "keyfile": "/path/to/client.key"
+        },
+        "mqtt_to_meshtastic": {
+            "subscribe_topic": "meshtastic/private/from_mqtt/dm_device_xyz",
+            "target_node_id": "!yourdeviceid", 
+            "target_channel_index": 0 
+        }
+    },
+    "//": "Comments: target_node_id: null or omit for broadcast on target_channel_index.",
+    "//": "target_channel_index in mqtt_to_meshtastic defaults to the bridge's channel index if omitted.",
+    "//": "payload_type options: 'full_packet', 'decoded_only', 'text_payload_only'. Defaults to 'full_packet'.",
+    "//": "TLS: set certfile/keyfile to null or omit if not using client certs."
+}
